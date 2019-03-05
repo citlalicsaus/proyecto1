@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { formatNumber } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
 public title:string="Citlali";
+
+public stylepha:any={'color':'red',
+                    'font-size':'30px'};
+
+public categoria:string = 'A';
 
   constructor() { }
 

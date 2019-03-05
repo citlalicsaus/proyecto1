@@ -1,4 +1,11 @@
-<div class="card-header">
+<div class="card-header" [ngStyle]="stylepha">
     Titulo CSA PHA
         {{title}}
+
+        <div [ngSwitch]="categoria">
+            <p *ngSwitchCase="'E'">Electronico</p>
+            <p *ngSwitchCase="'A'">Abarrotes</p>
+
+        </div>
+
   </div>
