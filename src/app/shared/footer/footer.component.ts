@@ -7,9 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  public botones: any[] = [{
+    name: 'boton 1'
+  }, {
+    name: 'boton 2'
+  }, {
+    name: 'boton 3'
+  }];
 
-  ngOnInit() {
+  public promotion: boolean = true;
+
+  public color: boolean = false;
+
+  constructor() {}
+
+  ngOnInit() {}
+
+  public aplicarPromocion() {
+  	this.color= !this.color;
+
   }
 
 }
