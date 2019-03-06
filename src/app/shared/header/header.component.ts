@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { formatNumber } from '@angular/common';
 
 @Component({
@@ -7,13 +7,13 @@ import { formatNumber } from '@angular/common';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-public title:string="Citlali";
+  
+  @Input('titulo') title:string;  //Entrada para el Header
 
 public stylepha:any={'color':'red',
                     'font-size':'30px'};
 
-public categoria:string = 'A';
+ @Input() categoria:string;
 
   constructor() { }
 

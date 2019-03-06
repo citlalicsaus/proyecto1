@@ -1,5 +1,7 @@
 <div class="container">
-  <div class="row"> pha 
-    <app-card></app-card>
+  
+  <!--{{lista | json}} -->
+  <div class="row"> 
+    <app-card *ngFor="let item of lista" [articulo]="item"></app-card>
   </div>
 </div>
