@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { articulosDB } from '../../datos/articulosDB';
+import { Articulo } from '../../modelos/articulo';
 
 @Component({
   selector: 'articulos',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticulosComponent implements OnInit {
 
-  constructor() { }
+  public lista: Articulo[] = articulosDB;
 
-  ngOnInit() {
-  }
+  constructor() {}
+
+  ngOnInit() {}
 
 }
