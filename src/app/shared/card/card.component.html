@@ -3,16 +3,17 @@
 <div class="row">
   
     
-<div class="card text-center">
+    <div class="card-footer text-muted" [ngClass]="{'border-black':color}">
+    
+    Fecha: {{articulo.fecha | date:'dd-MM-yyyy HH:mm:ss a'}} 
+    
     <app-header [titulo]="articulo.title" [categoria]="articulo.categoria" ></app-header>
     <img [src]="articulo.url" class="card-img-top" alt="...">
-
   
-
 <app-body  [price]="articulo.precio"  [description]="articulo.description" ></app-body>
 
 
-<app-footer></app-footer>
+<app-footer (onEliminar)="accionEliminar($event)"   (onCambiar)="select($event)"></app-footer>
 
 
 </div>

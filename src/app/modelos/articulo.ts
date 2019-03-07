@@ -10,5 +10,7 @@ export interface Articulo {
     promotion?:boolean;
     categoria?:string;
     url?:string;
+    id?:number;
+    fecha?:Date;
 
 }

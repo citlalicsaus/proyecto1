@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  Output, EventEmitter } from '@angular/core';
+import { createOfflineCompileUrlResolver } from '@angular/compiler';
 
 @Component({
   selector: 'app-footer',
@@ -16,6 +17,9 @@ export class FooterComponent implements OnInit {
 public promotion:boolean=true;
 public color:boolean=false;
 
+@Output() onEliminar:EventEmitter<boolean>=new EventEmitter<boolean>();
+@Output() onCambiar:EventEmitter<boolean>=new EventEmitter<boolean>();
+
   constructor() { }
 
   ngOnInit() {
@@ -24,5 +28,24 @@ public color:boolean=false;
   public aplicarPromocion(){
     this.color = !this.color;
   }
+
+  public eliminar(){
+
+    this.onEliminar.emit(true);
+    console.log("funcionando");
+    
+  }
+
+  public Cambiar(){
+
+    this.onCambiar.emit(true);
+    console.log("funcionando Evento Cambiar");
+    
+  }
+
+
+
+
+  
 
 }

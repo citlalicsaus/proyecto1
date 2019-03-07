@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 
 import {articulosBD } from '../../datos/articulosDB';
 import {Articulo } from '../../modelos/articulo';
@@ -18,5 +18,17 @@ export class ArticulosComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  public quitar(id:number){
+
+      for(let i=0; i<this.lista.length; i++){
+        if(this.lista[i].id==id){
+          this.lista.splice(i, 1);
+        }
+      }
+
+  }
+
+  
 
 }
