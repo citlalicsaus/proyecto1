@@ -3,7 +3,10 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ArticulosService } from '../../services/articulos.service'
 import { Articulo } from '../../modelos/articulo';
 
-import { FormGroup, FormControl} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+
+
 
 @Component({
   selector: 'app-admin',
@@ -27,35 +30,42 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
     this.articulos = this.as.articulos;
 
-    this.formArticulo= new FormGroup({
-      nombre: new FormControl('Cesar')
+    this.formArticulo = new FormGroup({
+      id: new FormControl(null),
+      nombre: new FormControl('',[Validators.required])
     });
 
 
   }
 
-  public nuevo(template: TemplateRef < any > ) {
+  public nuevo(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+    this.formArticulo.reset();
+    this.formArticulo.patchValue({
+      id:null
+    })
 
   }
   public agregar() {
 
-    this.as.nuevo({
-      nombre: 'Television 1',
-      marca: 'Panasonic',
-      precio: 3400.32,
-      title: 'Television',
-      description: '30 pulgadas',
-      promotion: false,
-      categoria: 'E',
-      url: 'assets/img/samsung.jpeg',
-      id: this.articulos.length,
-      fecha: new Date()
-    });
 
-    this.articulos = this.as.articulos;
+    if (this.formArticulo.value.id == null) {
+      let articulo: Articulo = this.formArticulo.value;
+
+      articulo.id=this.articulos.length + 1;
+      this.as.nuevo(articulo);
+
+      this.articulos = this.as.articulos;
+      
+    } else {
+      let articulo: Articulo = this.formArticulo.value;
+
+      this.as.actualizar(articulo);
+      this.articulos = this.as.articulos;
+
+    }
+
     this.modalRef.hide();
-
   }
 
   public borrar(articulo: Articulo) {
@@ -66,4 +76,8 @@ export class AdminComponent implements OnInit {
 
   }
 
+  public editar(articulo: Articulo, template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+    this.formArticulo.patchValue(articulo);
+  }
 }

@@ -5,8 +5,11 @@
         <button (click)="nuevo(template)" class="btn btn-primary btn-xs pull-right"><b>+</b> Nuevo</button>
         <tr>
           <th>ID</th>
-          <th>Title</th>
-          <th>Parent ID</th>
+          <th>Titulo</th>
+          <th>Descripcion</th>
+          <th>Marca</th>
+          <th>Categoria</th>
+          <th>Precio</th>
           <th class="text-center">Action</th>
         </tr>
       </thead>
@@ -14,8 +17,11 @@
         <td>{{articulo.id}}</td>
         <td>{{articulo.title}}</td>
         <td>{{articulo.description}}</td>
+        <td>{{articulo.marca}}</td>
+        <td>{{articulo.categoria}}</td>
+        <td>{{articulo.Precio}}</td>
         <td class="text-center">
-          <button class='btn btn-info btn-xs'><span class="glyphicon glyphicon-edit"></span> Editar</button>
+          <button (click)="editar(articulo, template)" class='btn btn-info btn-xs'><span class="glyphicon glyphicon-edit"></span> Editar</button>
           <button (click)="borrar(articulo)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Borrar</button></td>
       </tr>
     </table>
@@ -28,7 +34,18 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+
+
   <div class="modal-body">
+      <div  *ngIf="formArticulo.valid" class="alert alert-success" role="alert">
+          El formulario es correcto
+        </div>
+
+        <div *ngIf="!formArticulo.valid" class="alert alert-danger" role="alert">
+            El formulario es invalido
+          </div>
+              
+
     <div [formGroup]="formArticulo">
       {{ formArticulo.value | json }}
       <div class="form-group">
@@ -43,4 +60,11 @@
     </div>
     <button (click)="agregar()"> Agregar</button>
   </div>
+
+
+  
+
+
+
+
 </ng-template>
