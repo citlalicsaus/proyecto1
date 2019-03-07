@@ -2,6 +2,9 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ArticulosService } from '../../services/articulos.service'
 import { Articulo } from '../../modelos/articulo';
+
+import { FormGroup, FormControl} from '@angular/forms';
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -12,6 +15,8 @@ export class AdminComponent implements OnInit {
 
   public articulos: Articulo[];
 
+  public formArticulo: FormGroup;
+
   modalRef: BsModalRef;
   constructor(private modalService: BsModalService,
     public as: ArticulosService) {
@@ -21,6 +26,10 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     this.articulos = this.as.articulos;
+
+    this.formArticulo= new FormGroup({
+      nombre: new FormControl('Cesar')
+    });
 
 
   }

@@ -29,6 +29,18 @@
     </button>
   </div>
   <div class="modal-body">
+    <div [formGroup]="formArticulo">
+      {{ formArticulo.value | json }}
+      <div class="form-group">
+        <label for="exampleInputEmail1">Nombre</label>
+        <input formControlName="nombre" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>!-->
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+    </div>
     <button (click)="agregar()"> Agregar</button>
   </div>
 </ng-template>
