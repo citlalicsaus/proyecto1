@@ -1,6 +1,6 @@
 <div class="card text-center" [ngClass]="{'border-black': color }"> Fecha: {{ articulo.fecha  | date:'dd-MM-yyyy' }}
   <app-header [titulo]="articulo.title" [categoria]="articulo.categoria"></app-header>
-  <img [src]="articulo.url" class="card-img-top" alt="...">
+  <img [src]="articulo.url" class="card-img-top" >
   <app-body></app-body>
   <app-footer (onEliminar)="accionEliminar($event)" (onSeleccionar)="select($event)" ></app-footer>
 </div>
